@@ -2,7 +2,7 @@
 
 A Flutter application for the medical assistant chatbot that connects to the erchatagent backend API.
 
-**Current Version: 1.0.5+3**
+**Current Version: 1.0.4+22**
 
 ## Getting Started
 
@@ -27,12 +27,12 @@ This project is a Flutter application that provides a mobile interface for the m
 The app uses a freemium model with the following tiers:
 
 ### Free Tier
-- **8 messages per month** (reduced from 15 to encourage subscriptions)
+- **5 messages per month** (reduced to encourage subscriptions)
 - Basic medical information
 - Standard response time
 
-### Premium Tier ($6.99/month)
-- **50 messages per month** (increased from 35)
+### Premium Monthly Tier ($9.99/month)
+- **50 messages per month**
 - Priority response time
 - Advanced symptom analysis
 - Personalized health insights
@@ -43,6 +43,12 @@ The app uses a freemium model with the following tiers:
 - Detailed health reports
 - Medication reminders
 - Health tracking features
+
+### Premium Annual Tier ($49.99/year)
+- **600 messages per year** (50/month)
+- All premium features
+- Save 40% compared to monthly
+- 2 months free
 
 ## API Configuration
 
@@ -60,12 +66,12 @@ static const bool isDevelopment = false;
 
 ### Android (Google Play)
 
-1. Update the `android/app/build.gradle` file with your application ID and version
+1. Update the `android/app/build.gradle.kts` file with your application ID and version
 2. Create a keystore for signing the app:
    ```
    keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
    ```
-3. Configure signing in `android/app/build.gradle` and `android/key.properties`
+3. Configure signing in `android/app/build.gradle.kts` and `android/key.properties`
 4. Build the app bundle:
    ```
    flutter build appbundle
@@ -95,39 +101,42 @@ static const bool isDevelopment = false;
 - Clear conversation option
 - Error handling and network connectivity checks
 - Responsive UI for various device sizes
-- **New**: Visual message counter with premium indicators
-- **New**: Enhanced subscription prompts when running low on messages
-- **New**: Improved premium subscription UI with gradient design
-- **New**: Better monetization with reduced free tier limits
+- Visual message counter with premium indicators
+- Enhanced subscription prompts when running low on messages
+- Improved premium subscription UI with gradient design
+- Better monetization with reduced free tier limits
+- Annual subscription option with 40% savings
+- AdMob integration for banner and interstitial ads
 
 ## Version History
 
-### v1.0.5+3 (Latest)
-- **Fixed chat scrolling issue** - messages now appear in correct order
-- **Added auto-scroll behavior** - view automatically scrolls to show new messages
-- **Improved message visibility** - all messages are now properly visible
-- **Enhanced user experience** - smooth scrolling animations
-- Reduced free tier from 15 to 8 messages per month
-- Increased premium tier from 35 to 50 messages per month
-- Added visual message counter widget
-- Enhanced subscription prompts
-- Improved premium subscription UI
-- Updated dependencies to latest versions
-- Added new premium features (health reports, medication reminders)
+### v1.0.4+22 (Latest)
+- Added annual subscription option ($49.99/year)
+- Fixed subscription system (disabled debug mode)
+- Optimized ad placement for better CTR
+- Updated iOS minimum version to 13.0
+- Temporarily disabled AdMob on iOS to fix crashes
+- Enhanced subscription UI with savings percentage
+- Improved message limits (5 free, 50 premium monthly, 600 annual)
 
-### v1.0.4+2
-- Reduced free tier from 15 to 8 messages per month
-- Increased premium tier from 35 to 50 messages per month
-- Added visual message counter widget
-- Enhanced subscription prompts
-- Improved premium subscription UI
-- Updated dependencies to latest versions
-- Added new premium features (health reports, medication reminders)
+### v1.0.10+21
+- Fixed subscription system
+- Optimized ad placement
+- Added annual subscription option
 
-### v1.0.3+1
-- Initial release with basic freemium model
-- 15 free messages per month
-- 35 premium messages per month
+### v1.0.9+19
+- Enhanced subscription features
+- Improved ad integration
+
+### v1.0.6+4
+- Added AdMob integration
+- Updated subscription model
+
+### v1.0.5+3
+- Fixed chat scrolling issue
+- Added auto-scroll behavior
+- Improved message visibility
+- Enhanced user experience
 
 ## Testing
 
@@ -143,6 +152,7 @@ flutter test
 - **iOS Network Errors**: Verify that `NSAppTransportSecurity` is properly configured in `Info.plist`.
 - **Android Network Errors**: Check that the `INTERNET` permission is in the `AndroidManifest.xml`.
 - **Subscription Issues**: Ensure in-app purchase is properly configured for both platforms.
+- **iOS Crashes**: AdMob is temporarily disabled on iOS to prevent crashes.
 
 ## Deployment Checklist
 
@@ -155,8 +165,9 @@ Before submitting to app stores:
 5. Prepare privacy policy
 6. Create app store screenshots and descriptions
 7. Set up app store listing information
-8. **New**: Configure in-app purchase products in App Store Connect and Google Play Console
-9. **New**: Test subscription flow on both platforms
+8. Configure in-app purchase products in App Store Connect and Google Play Console
+9. Test subscription flow on both platforms
+10. Upload app-ads.txt to your developer website
 
 # Flask API
 
