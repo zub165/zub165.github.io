@@ -1,0 +1,34 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Doctor head -->
+  <circle cx="256" cy="196" r="80" fill="#f8d0b0" stroke="#2d3542" stroke-width="12" />
+  
+  <!-- Hair -->
+  <path d="M200 150 Q256 120 312 150 Q320 120 328 110 Q350 95 340 170 Q360 170 360 200 Q360 240 328 240 Q320 250 310 256 L310 270 Q300 310 256 310 Q212 310 202 270 L202 256 Q192 250 184 240 Q152 240 152 200 Q152 170 172 170 Q162 95 184 110 Q192 120 200 150" fill="#8b6244" stroke="#2d3542" stroke-width="8" />
+  
+  <!-- Face features -->
+  <path d="M226 190 Q236 198 246 190" stroke="#2d3542" stroke-width="8" stroke-linecap="round" />
+  <path d="M266 190 Q276 198 286 190" stroke="#2d3542" stroke-width="8" stroke-linecap="round" />
+  <circle cx="236" cy="180" r="8" fill="#2d3542" />
+  <circle cx="276" cy="180" r="8" fill="#2d3542" />
+  <path d="M236 220 Q256 235 276 220" stroke="#2d3542" stroke-width="8" stroke-linecap="round" />
+  
+  <!-- Stethoscope -->
+  <circle cx="190" cy="335" r="15" fill="#2d3542" />
+  <path d="M190 335 Q160 330 160 350 Q160 370 180 380 L180 400" stroke="#2d3542" stroke-width="10" fill="none" stroke-linecap="round" />
+  
+  <!-- Doctor coat -->
+  <path d="M200 270 L170 370 L130 400 L180 400 L220 350 L256 360 L292 350 L332 400 L382 400 L342 370 L312 270" fill="none" stroke="#2d3542" stroke-width="12" stroke-linejoin="round" />
+  
+  <!-- Neck tie -->
+  <path d="M236 270 L256 310 L276 270" fill="#657587" stroke="#2d3542" stroke-width="6" />
+  <path d="M256 310 L256 350" stroke="#2d3542" stroke-width="6" />
+  
+  <!-- Medical badge -->
+  <rect x="300" y="320" width="40" height="40" rx="8" fill="#22c55e" stroke="#2d3542" stroke-width="6" />
+  <path d="M310 340 L330 340 M320 330 L320 350" stroke="white" stroke-width="6" stroke-linecap="round" />
+  
+  <!-- Doctor head sensor -->
+  <circle cx="256" cy="96" r="20" fill="#2d3542" />
+  <circle cx="256" cy="96" r="8" fill="#8f97a3" />
+  <rect x="246" y="96" width="20" height="40" fill="#2d3542" />
+</svg> 

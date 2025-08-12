@@ -1,0 +1,16 @@
+[Unit]
+Description=Medical Assistant API Service
+After=network.target
+
+[Service]
+User=newgen
+Group=newgen
+WorkingDirectory=/path/to/backend
+Environment="PATH=/path/to/backend/venv/bin"
+ExecStart=/path/to/backend/venv/bin/gunicorn --bind 0.0.0.0:5001 app:app
+Restart=always
+StandardOutput=append:/path/to/backend/logs/medical_assistant.log
+StandardError=append:/path/to/backend/logs/medical_assistant.log
+
+[Install]
+WantedBy=multi-user.target 
