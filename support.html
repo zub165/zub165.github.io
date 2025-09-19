@@ -1,452 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Schedule App - Support Center</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-            text-align: center;
-        }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
-            border-left: 4px solid #3498db;
-            padding-left: 15px;
-        }
-        h3 {
-            color: #2c3e50;
-            margin-top: 25px;
-        }
-        .contact-info {
-            background: #ecf0f1;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        .faq-item {
-            margin: 20px 0;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            background: #f8f9fa;
-        }
-        .question {
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        .answer {
-            margin-top: 10px;
-            color: #555;
-        }
-        .login-info {
-            background: #e8f5e8;
-            padding: 15px;
-            border-radius: 5px;
-            border: 1px solid #4caf50;
-        }
-        .login-info strong {
-            color: #2e7d32;
-        }
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-        .feature-card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #e9ecef;
-        }
-        .version-info {
-            background: #fff3cd;
-            padding: 15px;
-            border-radius: 5px;
-            border: 1px solid #ffeaa7;
-            margin: 20px 0;
-        }
-        .troubleshooting-section {
-            background: #f8d7da;
-            padding: 20px;
-            border-radius: 5px;
-            border: 1px solid #f5c6cb;
-            margin: 20px 0;
-        }
-        .privacy-section {
-            background: #d1ecf1;
-            padding: 20px;
-            border-radius: 5px;
-            border: 1px solid #bee5eb;
-            margin: 20px 0;
-        }
-        .step-by-step {
-            background: #d4edda;
-            padding: 20px;
-            border-radius: 5px;
-            border: 1px solid #c3e6cb;
-            margin: 20px 0;
-        }
-        .step-by-step ol {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-        .step-by-step li {
-            margin: 8px 0;
-        }
-        .icon {
-            font-size: 1.2em;
-            margin-right: 8px;
-        }
-        .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            text-align: center;
-            color: #666;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Support - AI Agent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    }
+    h1, h2 {
+      color: #2d3e50;
+    }
+    p, li {
+      line-height: 1.6;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    a {
+      color: #3b60d1;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🏥 Doctor Schedule App - Support Center</h1>
-        
-        <p style="text-align: center; font-size: 1.1em; color: #555;">
-            Welcome to the official support center for Doctor Schedule App, your comprehensive healthcare scheduling solution. 
-            Below you'll find everything you need to get help, report issues, and stay updated with the latest features.
-        </p>
+  <div class="container">
+    <h1>AI Agent - Support Center</h1>
+    <p>Welcome to the official support center for <strong>AI Agent</strong>, your intelligent healthcare assistant. Below you'll find everything you need to get help, report issues, and stay updated with the latest features.</p>
 
-        <div class="login-info">
-            <h3>🔑 Demo Login Credentials</h3>
-            <p><strong>Username:</strong> admin</p>
-            <p><strong>Password:</strong> admin123</p>
-            <p>These credentials work for testing all app features and are perfect for app store reviewers.</p>
-        </div>
-
-        <h2><span class="icon">📱</span>App Features & Capabilities</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h4>📅 Schedule Management</h4>
-                <p>View, create, and manage doctor schedules with an intuitive calendar interface. Supports monthly and daily views with easy drag-and-drop functionality.</p>
-            </div>
-            <div class="feature-card">
-                <h4>🏥 Location Management</h4>
-                <p>Add, edit, and manage hospital locations. Track multiple facilities with detailed information including addresses and contact details.</p>
-            </div>
-            <div class="feature-card">
-                <h4>👨‍⚕️ Doctor Management</h4>
-                <p>Comprehensive doctor profile management including specialties, contact information, and availability tracking.</p>
-            </div>
-            <div class="feature-card">
-                <h4>🤖 AI Scheduling</h4>
-                <p>Automated schedule generation and optimization using artificial intelligence to ensure optimal coverage and efficiency.</p>
-            </div>
-            <div class="feature-card">
-                <h4>⏰ Time Off Requests</h4>
-                <p>Submit and manage time-off requests with approval workflows and automatic schedule adjustments.</p>
-            </div>
-            <div class="feature-card">
-                <h4>📋 Duty Requests</h4>
-                <p>Create and manage duty assignments with real-time notifications and status tracking.</p>
-            </div>
-            <div class="feature-card">
-                <h4>💾 Data Management</h4>
-                <p>Export, delete, and manage your data with GDPR-compliant tools for complete data control.</p>
-            </div>
-            <div class="feature-card">
-                <h4>🌙 Dark Mode</h4>
-                <p>Switch between light and dark themes for comfortable viewing in any environment.</p>
-            </div>
-        </div>
-
-        <h2><span class="icon">❓</span>Frequently Asked Questions</h2>
-        
-        <div class="faq-item">
-            <div class="question">Q: How do I log into the app?</div>
-            <div class="answer">A: Use the demo credentials provided above: Username "admin" and Password "admin123". These credentials work for all app features and are specifically designed for testing and demonstration purposes.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">Q: The app shows "simulation mode" - what does this mean?</div>
-            <div class="answer">A: When the backend server is unavailable, the app automatically switches to simulation mode with demo data. This ensures the app remains fully functional for testing and demonstration purposes. This is a feature, not a bug!</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">Q: How do I add a new hospital location?</div>
-            <div class="answer">A: Navigate to Admin → Manage Locations → Add New Location. Fill in the location details including name, address, and contact information, then save.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">Q: How do I add a new doctor to the system?</div>
-            <div class="answer">A: Go to Admin → Manage Doctors → Add New Doctor. Enter the doctor's information including name, specialty, contact details, and availability, then save.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">Q: Can I export my data for backup purposes?</div>
-            <div class="answer">A: Yes! Go to Settings → Data Management → Export User Data to download your data in JSON format. This includes all your schedules, locations, and doctor information.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">Q: How do I completely delete my account and all data?</div>
-            <div class="answer">A: Go to Settings → Data Management → Delete Account. This will permanently remove all your data from the system. This action cannot be undone.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">Q: The logout button doesn't work - what should I do?</div>
-            <div class="answer">A: This issue has been fixed in version 1.0.9. If you're still experiencing issues, try force-closing and reopening the app, or restart your device.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">Q: Can I use the app offline?</div>
-            <div class="answer">A: The app has partial offline support. When the backend is unavailable, it automatically switches to simulation mode with demo data, ensuring you can still explore all features.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">Q: How do I change the app theme (light/dark mode)?</div>
-            <div class="answer">A: Go to Settings → Appearance → Theme and select either Light or Dark mode. The setting will be saved and applied immediately.</div>
-        </div>
-
-        <h2><span class="icon">🐛</span>Troubleshooting Guide</h2>
-        
-        <div class="troubleshooting-section">
-            <h3>Common Issues and Solutions</h3>
-            
-            <div class="faq-item">
-                <div class="question">App won't load or shows errors</div>
-                <div class="answer">
-                    <strong>Try these solutions in order:</strong>
-                    <ol>
-                        <li>Check your internet connection</li>
-                        <li>Force-close the app and reopen it</li>
-                        <li>Restart your device</li>
-                        <li>Make sure you're using the latest version from the app store</li>
-                        <li>Clear the app's cache (Android) or offload and reinstall (iOS)</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="question">Can't see schedules or data</div>
-                <div class="answer">
-                    <strong>Check these items:</strong>
-                    <ol>
-                        <li>Make sure you're logged in with the correct credentials (admin/admin123)</li>
-                        <li>Check if the app is in simulation mode (this is normal if backend is unavailable)</li>
-                        <li>Try refreshing the schedule view by pulling down</li>
-                        <li>Navigate to a different date and back</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="question">Login fails or shows authentication errors</div>
-                <div class="answer">
-                    <strong>Authentication troubleshooting:</strong>
-                    <ol>
-                        <li>Use the exact credentials: Username "admin", Password "admin123"</li>
-                        <li>Check your internet connection</li>
-                        <li>If the backend is unavailable, the app will automatically use demo data</li>
-                        <li>Try logging out and logging back in</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="question">App crashes or freezes</div>
-                <div class="answer">
-                    <strong>Stability fixes:</strong>
-                    <ol>
-                        <li>Close all other apps to free up memory</li>
-                        <li>Restart your device</li>
-                        <li>Update to the latest app version</li>
-                        <li>Check if your device meets the minimum requirements</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <h2><span class="icon">📋</span>Step-by-Step Guides</h2>
-        
-        <div class="step-by-step">
-            <h3>How to Create Your First Schedule</h3>
-            <ol>
-                <li>Log in using admin/admin123</li>
-                <li>Go to the Schedule tab</li>
-                <li>Tap the "+" button or use the Quick Actions menu</li>
-                <li>Select "Create Schedule"</li>
-                <li>Choose a doctor from the list</li>
-                <li>Select a location</li>
-                <li>Pick a date and time</li>
-                <li>Add any notes if needed</li>
-                <li>Tap "Save" to create the schedule</li>
-            </ol>
-        </div>
-
-        <div class="step-by-step">
-            <h3>How to Add a New Location</h3>
-            <ol>
-                <li>Log in as admin</li>
-                <li>Go to Admin → Manage Locations</li>
-                <li>Tap "Add New Location"</li>
-                <li>Enter the location name (e.g., "Main Hospital")</li>
-                <li>Add the address</li>
-                <li>Include contact information</li>
-                <li>Set any special notes or requirements</li>
-                <li>Tap "Save" to add the location</li>
-            </ol>
-        </div>
-
-        <div class="step-by-step">
-            <h3>How to Export Your Data</h3>
-            <ol>
-                <li>Go to Settings</li>
-                <li>Scroll down to "Data Management"</li>
-                <li>Tap "Export User Data"</li>
-                <li>Wait for the export to complete</li>
-                <li>Choose where to save the JSON file</li>
-                <li>The file will contain all your schedules, locations, and doctor data</li>
-            </ol>
-        </div>
-
-        <h2><span class="icon">📞</span>Contact Support</h2>
-        
-        <div class="contact-info">
-            <h3>Need More Help?</h3>
-            <p>If you can't find the answer to your question here, please contact us:</p>
-            <ul>
-                <li><strong>Email:</strong> zub165@yahoo.com</li>
-                <li><strong>Response Time:</strong> We typically respond within 24-48 hours (Monday-Friday)</li>
-                <li><strong>Support Hours:</strong> 9 AM - 5 PM EST, Monday through Friday</li>
-            </ul>
-            
-            <h4>When contacting support, please include:</h4>
-            <ul>
-                <li>Your device type and operating system version</li>
-                <li>App version (found in Settings → About)</li>
-                <li>Detailed description of the issue</li>
-                <li>Steps to reproduce the problem</li>
-                <li>Screenshots or screen recordings if applicable</li>
-                <li>Any error messages you're seeing</li>
-            </ul>
-        </div>
-
-        <h2><span class="icon">📋</span>Privacy & Data Management</h2>
-        
-        <div class="privacy-section">
-            <h3>Your Privacy is Important to Us</h3>
-            <p>The Doctor Schedule App includes comprehensive data management features to give you complete control over your information:</p>
-            <ul>
-                <li><strong>Data Export:</strong> Download all your data in JSON format anytime</li>
-                <li><strong>Selective Deletion:</strong> Delete specific categories of data (schedules, locations, etc.)</li>
-                <li><strong>Complete Account Deletion:</strong> Permanently remove all your data from the system</li>
-                <li><strong>GDPR Compliance:</strong> Full compliance with European data protection regulations</li>
-                <li><strong>Secure Storage:</strong> All data is encrypted and stored securely</li>
-                <li><strong>No Third-Party Sharing:</strong> We don't share your data with third parties</li>
-            </ul>
-            
-            <h4>Data Retention Policy:</h4>
-            <ul>
-                <li>Your data is stored only as long as your account is active</li>
-                <li>When you delete your account, all data is permanently removed within 30 days</li>
-                <li>Backup data is automatically purged after account deletion</li>
-                <li>No data is retained for marketing or analytics purposes</li>
-            </ul>
-        </div>
-
-        <h2><span class="icon">🔄</span>App Updates & Version Information</h2>
-        
-        <div class="version-info">
-            <h3>Current Version Details</h3>
-            <ul>
-                <li><strong>App Version:</strong> 1.0.9+9</li>
-                <li><strong>Last Updated:</strong> September 19, 2025</li>
-                <li><strong>Minimum iOS Version:</strong> 12.0</li>
-                <li><strong>Minimum Android Version:</strong> API 21 (Android 5.0)</li>
-                <li><strong>Supported Platforms:</strong> iOS, Android, Web</li>
-            </ul>
-            
-            <h4>Recent Updates (Version 1.0.9):</h4>
-            <ul>
-                <li>✅ Fixed logout functionality on all devices</li>
-                <li>✅ Improved CORS handling for web browsers</li>
-                <li>✅ Enhanced error handling and user feedback</li>
-                <li>✅ Better simulation mode fallback</li>
-                <li>✅ UI improvements and bug fixes</li>
-            </ul>
-            
-            <p><strong>Update Instructions:</strong> We regularly update the app with new features and bug fixes. Make sure to keep your app updated through the App Store or Google Play Store for the best experience. Updates are free and include security improvements.</p>
-        </div>
-
-        <h2><span class="icon">📚</span>Technical Documentation</h2>
-        
-        <div class="faq-item">
-            <div class="question">API Endpoints and Integration</div>
-            <div class="answer">
-                <p><strong>Backend Services:</strong></p>
-                <ul>
-                    <li>FastAPI Server: Port 8000 (Main API)</li>
-                    <li>Django Server: Port 8001 (AI Scheduling)</li>
-                    <li>Authentication: JWT Token-based</li>
-                    <li>Data Format: JSON</li>
-                </ul>
-                
-                <p><strong>Key Endpoints:</strong></p>
-                <ul>
-                    <li>POST /api/auth/login - User authentication</li>
-                    <li>GET /api/schedules - Retrieve schedules</li>
-                    <li>POST /api/schedules - Create new schedule</li>
-                    <li>GET /api/locations - Get all locations</li>
-                    <li>GET /api/doctors - Get all doctors</li>
-                    <li>GET /aiScheduleApp/list/ - AI schedule list</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">System Requirements</div>
-            <div class="answer">
-                <p><strong>Mobile Devices:</strong></p>
-                <ul>
-                    <li>iOS 12.0 or later</li>
-                    <li>Android 5.0 (API 21) or later</li>
-                    <li>Minimum 2GB RAM</li>
-                    <li>100MB free storage space</li>
-                </ul>
-                
-                <p><strong>Web Browsers:</strong></p>
-                <ul>
-                    <li>Chrome 80+</li>
-                    <li>Firefox 75+</li>
-                    <li>Safari 13+</li>
-                    <li>Edge 80+</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p><strong>© 2025 Doctor Schedule App by AI Agent. All rights reserved.</strong></p>
-            <p>This support page contains all the information you need to use the Doctor Schedule App effectively.</p>
-            <p>Last updated: September 19, 2025 | Version: 1.0.9+9</p>
-        </div>
+    <div class="section">
+      <h2>📩 Contact Support</h2>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:zub165@yahoo.com">zub165@yahoo.com</a></li>
+        <li><strong>GitHub Issues:</strong> <a href="https://github.com/zub165/aiagent-support/issues" target="_blank">Submit a bug or feature request</a></li>
+      </ul>
+      <p><strong>Response time:</strong> Within 24–48 hours (Monday–Friday)</p>
     </div>
+
+    <div class="section">
+      <h2>📚 Documentation & Developer Resources</h2>
+      <p>Visit our full documentation site for API reference, setup instructions, and integration help:</p>
+      <ul>
+        <li><a href="https://zub165.github.io/aiagent-support" target="_blank">AI Agent Developer Docs</a></li>
+        <li><a href="https://github.com/zub165/aiagent-support" target="_blank">Source Code & Releases</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🔧 Troubleshooting</h2>
+      <p>Common issues and how to resolve them:</p>
+      <ul>
+        <li><strong>Can't connect to API:</strong> Ensure your endpoint is reachable and port 5002 is open.</li>
+        <li><strong>Invalid session ID:</strong> Always pass a unique <code>session_id</code> in your requests.</li>
+        <li><strong>No response from AI:</strong> Check for backend crashes or malformed JSON.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 FAQs</h2>
+      <ul>
+        <li><strong>Is AI Agent a real doctor?</strong> No. AI Agent provides educational and assistive content, not medical diagnoses.</li>
+        <li><strong>Does AI Agent store my data?</strong> No, unless you're using a custom server integration.</li>
+        <li><strong>Can I use this app offline?</strong> Partial offline support is available for cached answers and local features.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>📌 Current Version</h2>
+      <p><strong>App Version:</strong> 1.0.0<br>
+         <strong>Backend Version:</strong> 1.0.0<br>
+         <strong>Last Updated:</strong> April 16, 2025
+      </p>
+    </div>
+
+    <div class="footer">
+      &copy; 2025 AI Agent by Innovators Generation. All rights reserved.
+    </div>
+  </div>
 </body>
 </html>
-
