@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — BuildSmart Pro</title>
+  <link rel="stylesheet" href="legal.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>Privacy Policy</h1>
+      <p class="tagline">BuildSmart Pro</p>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="updated">Last updated: June 14, 2026</p>
+
+    <section class="card">
+      <h2>Overview</h2>
+      <p>
+        BuildSmart Pro helps you plan construction projects, estimate costs, and manage tasks.
+        We designed the app so <strong>your project data stays on your device first</strong>.
+        Optional cloud sync connects only to a backend URL you configure (for example your GoDaddy VPS).
+      </p>
+      <p>We do not sell your personal information. This app does not require a user account to use core features.</p>
+    </section>
+
+    <section class="card">
+      <h2>Information we collect</h2>
+      <h3>Data you enter</h3>
+      <ul>
+        <li>Project names, floor plans, cost estimates, planner tasks, and region or unit preferences</li>
+        <li>Optional cloud sync URL you enter in Settings</li>
+      </ul>
+      <h3>Data stored on your device</h3>
+      <p>
+        Project data is saved locally using on-device storage (SharedPreferences on mobile, localStorage in the web app).
+        You control this data and can delete it at any time from Settings.
+      </p>
+      <h3>Cloud sync (optional)</h3>
+      <p>
+        If you enable cloud sync, project payloads are sent to your configured API server over HTTPS/HTTP
+        (for example <code>http://208.109.215.53:8004</code>). That server is operated by you or your provider—not by BuildSmart Pro unless we host it for you.
+        Review your server operator’s policies for data stored there.
+      </p>
+      <h3>What we do not collect by default</h3>
+      <ul>
+        <li>No advertising identifiers</li>
+        <li>No third-party analytics SDKs in the mobile app</li>
+        <li>No automatic upload of your projects without a configured cloud URL</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>How we use information</h2>
+      <ul>
+        <li>Display and save your projects, estimates, and plans</li>
+        <li>Sync projects to your optional backend when you connect cloud sync</li>
+        <li>Generate rule-based planner suggestions when the API is reachable</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Sharing</h2>
+      <p>
+        We do not share your project data with third parties for marketing.
+        Data leaves your device only when you use Share, cloud sync, or open external links you choose.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Data retention &amp; deletion</h2>
+      <p>
+        Local data remains until you delete it or uninstall the app.
+        In the mobile app: <strong>Settings → Delete all app data</strong>.
+        In the web app: <strong>Settings → Clear All Local Data</strong>.
+      </p>
+      <p>
+        To remove cloud copies, delete projects in the app (which sends DELETE to your synced backend when connected)
+        or delete records on your server directly.
+      </p>
+      <p><a class="btn" href="Support.html#delete-data">How to delete your data</a></p>
+    </section>
+
+    <section class="card">
+      <h2>Children</h2>
+      <p>BuildSmart Pro is not directed at children under 13. We do not knowingly collect data from children.</p>
+    </section>
+
+    <section class="card">
+      <h2>Changes</h2>
+      <p>We may update this policy. The “Last updated” date at the top will change when we do.</p>
+    </section>
+
+    <section class="card">
+      <h2>Contact</h2>
+      <p>Questions about privacy: see our <a href="Support.html">Support</a> page or open an issue on
+        <a href="https://github.com/zub165/BuildSmart-Pro/issues">GitHub</a>.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap"><a href="index.html">Home</a> · <a href="Support.html">Support</a></div>
+  </footer>
+</body>
+</html>
