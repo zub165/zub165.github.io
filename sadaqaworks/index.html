@@ -7,30 +7,179 @@
   <meta name="description" content="Deposit Zakat, fund vocational training, and help beneficiaries become independent through dignified work.">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Fraunces:wght@700&display=swap" rel="stylesheet">
   <style>
-    :root { --primary:#0d6b4f; --primary-dark:#094d38; --cream:#f4f7f5; --ink:#1a2420; }
+    :root { --primary:#0d6b4f; --primary-dark:#094d38; --cream:#f4f7f5; --ink:#1a2420; --muted:#5a6557; --yes:#0d6b4f; --partial:#b8860b; --no:#9aa39a; }
     * { box-sizing:border-box; margin:0; padding:0; }
-    body { font-family:"DM Sans",system-ui,sans-serif; color:var(--ink); background:var(--cream); min-height:100vh; }
+    body { font-family:"DM Sans",system-ui,sans-serif; color:var(--ink); background:var(--cream); min-height:100vh; line-height:1.6; }
     a { color:var(--primary); }
     header { background:linear-gradient(135deg,var(--primary-dark),var(--primary)); color:#fff; padding:3rem 1.5rem 4rem; text-align:center; }
     h1 { font-family:Fraunces,Georgia,serif; font-size:clamp(2rem,6vw,3rem); margin-bottom:0.75rem; }
-    .lead { max-width:36rem; margin:0 auto 1.5rem; opacity:0.95; font-size:1.1rem; }
-    .grid { display:grid; gap:1rem; max-width:900px; margin:-2rem auto 0; padding:0 1.25rem 3rem; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+    .lead { max-width:40rem; margin:0 auto 1.25rem; opacity:0.95; font-size:1.1rem; }
+    .badge { display:inline-block; background:rgba(255,255,255,0.15); padding:0.35rem 0.85rem; border-radius:999px; font-size:0.85rem; margin-bottom:1rem; }
+    .btns { display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; margin-top:1rem; }
+    .btn { display:inline-block; padding:0.75rem 1.35rem; border-radius:999px; background:#fff; color:var(--primary-dark); text-decoration:none; font-weight:700; }
+    .btn.ghost { background:rgba(255,255,255,0.12); color:#fff; border:1px solid rgba(255,255,255,0.35); }
+    main { max-width:960px; margin:0 auto; padding:0 1.25rem 3rem; }
+    .grid { display:grid; gap:1rem; margin:-2rem 0 2.5rem; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
     .card { background:#fff; border-radius:1rem; padding:1.25rem; box-shadow:0 8px 30px rgba(0,0,0,0.06); }
     .card h2 { font-size:1rem; color:var(--primary); margin-bottom:0.5rem; }
-    footer { text-align:center; padding:2rem 1rem 3rem; color:#5a6557; font-size:0.95rem; }
+    section { background:#fff; border-radius:1.25rem; padding:1.5rem; box-shadow:0 8px 30px rgba(0,0,0,0.05); margin-bottom:1.5rem; }
+    section > h2 { font-family:Fraunces,Georgia,serif; color:var(--primary); font-size:1.35rem; margin-bottom:0.35rem; }
+    section > p.sub { color:var(--muted); margin-bottom:1.25rem; font-size:0.95rem; }
+    .compare-wrap { overflow-x:auto; }
+    table.compare { width:100%; border-collapse:collapse; font-size:0.92rem; min-width:640px; }
+    table.compare th, table.compare td { padding:0.65rem 0.75rem; text-align:left; border-bottom:1px solid #e8efe9; vertical-align:top; }
+    table.compare th { background:#f0f7f3; color:var(--primary-dark); font-weight:700; }
+    table.compare tr:last-child td { border-bottom:none; }
+    .tag { display:inline-block; padding:0.15rem 0.55rem; border-radius:999px; font-size:0.78rem; font-weight:600; }
+    .tag.yes { background:#e8f3ee; color:var(--yes); }
+    .tag.partial { background:#fff8e6; color:var(--partial); }
+    .tag.no { background:#f0f0f0; color:var(--no); }
+    .flow { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; font-size:0.9rem; color:var(--muted); margin-top:0.75rem; }
+    .flow span { background:#f0f7f3; padding:0.35rem 0.65rem; border-radius:0.5rem; }
+    .flow .arrow { background:none; padding:0; }
+    footer { text-align:center; padding:2rem 1rem 3rem; color:var(--muted); font-size:0.95rem; }
     footer a { margin:0 0.5rem; }
   </style>
 </head>
 <body>
   <header>
+    <p class="badge">Mobile app v1.0.16 · Android &amp; iOS</p>
     <h1>Sadaqaworks</h1>
-    <p class="lead">A digital ecosystem for Zakat deposits, contractor-led training, and beneficiary independence.</p>
+    <p class="lead">A digital ecosystem for Zakat deposits, contractor-led vocational training, and beneficiary independence — not dependency.</p>
+    <div class="btns">
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.innovatorsgeneration.sadaqaworks">Google Play</a>
+      <a class="btn ghost" href="support.html">Support &amp; reviewer login</a>
+    </div>
   </header>
-  <section class="grid">
-    <article class="card"><h2>Members</h2><p>Link a bank account, deposit Zakat, and fund vocational programs that create lasting impact.</p></article>
-    <article class="card"><h2>Contractors</h2><p>Register training programs and guide Zakat-eligible trainees to graduation.</p></article>
-    <article class="card"><h2>Beneficiaries</h2><p>Apply for eligibility, enroll in training, and track progress toward independence.</p></article>
-  </section>
+
+  <main>
+    <div class="grid">
+      <article class="card"><h2>Members</h2><p>Link a bank account, deposit Zakat, view your wallet, and fund training programs that create lasting impact.</p></article>
+      <article class="card"><h2>Contractors</h2><p>Register as a trainer, create programs, enroll eligible trainees, and update progress toward graduation.</p></article>
+      <article class="card"><h2>Beneficiaries</h2><p>Apply for Zakat eligibility, enroll in training, and track your path to dignified independence.</p></article>
+    </div>
+
+    <section id="features">
+      <h2>Mobile app vs this website</h2>
+      <p class="sub">Side-by-side comparison — use the <strong>mobile app</strong> for full functionality. This site provides legal pages, support, and store links.</p>
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Mobile app (Android / iOS)</th>
+              <th>This website (GitHub Pages)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sign in</strong></td>
+              <td><span class="tag yes">Yes</span> Django account — email <code>demo@mywaitime.com</code> for reviewers</td>
+              <td><span class="tag no">No login</span> Public info pages only</td>
+            </tr>
+            <tr>
+              <td><strong>Onboarding walkthrough</strong></td>
+              <td><span class="tag yes">Yes</span> Skip or swipe through on first launch</td>
+              <td><span class="tag no">N/A</span></td>
+            </tr>
+            <tr>
+              <td><strong>Home &amp; wallet dashboard</strong></td>
+              <td><span class="tag yes">Yes</span> Balance, activity, allocations, quick actions</td>
+              <td><span class="tag no">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>Link bank account</strong></td>
+              <td><span class="tag yes">Yes</span> Settings tab</td>
+              <td><span class="tag no">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>Deposit Zakat</strong></td>
+              <td><span class="tag yes">Yes</span> Zakat tab + deposit history</td>
+              <td><span class="tag no">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>Zakat wallet &amp; allocation</strong></td>
+              <td><span class="tag yes">Yes</span> Available balance, allocated to training</td>
+              <td><span class="tag no">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>Contractor registration</strong></td>
+              <td><span class="tag yes">Yes</span> Contractor tab — skills, programs</td>
+              <td><span class="tag no">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>Training programs &amp; enrollments</strong></td>
+              <td><span class="tag yes">Yes</span> Create programs, enroll beneficiaries, track progress</td>
+              <td><span class="tag no">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>Beneficiary application</strong></td>
+              <td><span class="tag yes">Yes</span> Apply, eligibility status, program enrollment</td>
+              <td><span class="tag no">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>Admin approvals</strong></td>
+              <td><span class="tag yes">Yes</span> Settings → Admin panel (staff accounts)</td>
+              <td><span class="tag no">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>Themes &amp; languages</strong></td>
+              <td><span class="tag yes">Yes</span> 8 color themes, 15 languages in Settings</td>
+              <td><span class="tag partial">English only</span></td>
+            </tr>
+            <tr>
+              <td><strong>Delete account &amp; data</strong></td>
+              <td><span class="tag yes">Yes</span> In-app + backend sync</td>
+              <td><span class="tag yes">Yes</span> <a href="delete-account.html">Instructions</a></td>
+            </tr>
+            <tr>
+              <td><strong>Privacy policy</strong></td>
+              <td><span class="tag yes">Yes</span> Linked in Settings</td>
+              <td><span class="tag yes">Yes</span> <a href="privacy.html">privacy.html</a></td>
+            </tr>
+            <tr>
+              <td><strong>Support &amp; demo credentials</strong></td>
+              <td><span class="tag yes">Yes</span> Opens this site from Settings</td>
+              <td><span class="tag yes">Yes</span> <a href="support.html">support.html</a></td>
+            </tr>
+            <tr>
+              <td><strong>Legacy web portal</strong><br><small>Projects, volunteers, donations</small></td>
+              <td><span class="tag no">Not in app</span></td>
+              <td><span class="tag partial">Separate</span> Older HTML UI on VPS port 3004 (not this site)</td>
+            </tr>
+            <tr>
+              <td><strong>Offline / cached data</strong></td>
+              <td><span class="tag yes">Yes</span> Hybrid local + server sync</td>
+              <td><span class="tag no">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>API security</strong></td>
+              <td><span class="tag yes">Yes</span> Token auth on Zakat API after sign-in</td>
+              <td><span class="tag no">N/A</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="flow">
+        <span>Member links bank</span><span class="arrow">→</span>
+        <span>Deposits Zakat</span><span class="arrow">→</span>
+        <span>Funds training</span><span class="arrow">→</span>
+        <span>Contractor enrolls beneficiary</span><span class="arrow">→</span>
+        <span>Graduates independent</span>
+      </div>
+    </section>
+
+    <section id="download">
+      <h2>Download</h2>
+      <p class="sub">Package ID: <code>com.innovatorsgeneration.sadaqaworks</code></p>
+      <p>
+        <a class="btn" style="background:var(--primary);color:#fff;" href="https://play.google.com/store/apps/details?id=com.innovatorsgeneration.sadaqaworks">Google Play</a>
+        &nbsp;
+        <a class="btn" style="background:#e8f3ee;color:var(--primary);" href="support.html">Reviewer sign-in help</a>
+      </p>
+    </section>
+  </main>
+
   <footer>
     <p>Contact: <a href="mailto:zub165@yahoo.com">zub165@yahoo.com</a></p>
     <p style="margin-top:0.75rem;">
@@ -38,7 +187,7 @@
       <a href="support.html">Support</a>
       <a href="delete-account.html">Delete Account</a>
     </p>
-    <p style="margin-top:0.5rem;">© Innovators Generation · Package ID: com.innovatorsgeneration.sadaqaworks</p>
+    <p style="margin-top:0.5rem;">© Innovators Generation · com.innovatorsgeneration.sadaqaworks</p>
   </footer>
 </body>
 </html>
