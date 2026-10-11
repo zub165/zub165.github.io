@@ -15,8 +15,8 @@ window.ADHAN_PAYPAL = {
   currency: 'USD',
   amount: '4.99',
 
-  // --- put your real link here ---
-  paypalMeUrl: '', // example: 'https://paypal.me/InnovatorsGeneration/4.99'
+  // --- PayPal.Me (live) ---
+  paypalMeUrl: 'https://paypal.me/innovatorgeneration/4.99',
 
   hostedButtonId: '', // optional PayPal hosted button id
   clientId: '', // optional Live Client ID for Smart Payment Buttons
