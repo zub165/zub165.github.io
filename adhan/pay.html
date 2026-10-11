@@ -130,6 +130,16 @@
     <label for="code">Unlock code</label>
     <input id="code" type="text" autocomplete="off" placeholder="Paste code from email" />
     <button class="btn btn-secondary" id="unlockBtn" type="button">Unlock web app</button>
+
+    <hr style="border: none; border-top: 1px solid var(--border); margin: 22px 0 12px;" />
+    <p style="margin-bottom: 8px; color: var(--text); font-weight: 600;">Admin access</p>
+    <p style="font-size: 0.85rem;">Owner sign-in always unlocks the web app (same Azan admin account). Password can be changed later on the server.</p>
+    <label for="adminEmail">Admin email</label>
+    <input id="adminEmail" type="email" autocomplete="username" value="zub165@yahoo.com" />
+    <label for="adminPassword">Admin password</label>
+    <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Admin password" />
+    <button class="btn btn-secondary" id="adminBtn" type="button">Sign in as admin</button>
+
     <div class="msg" id="msg" role="status"></div>
 
     <p class="foot">
@@ -196,8 +206,40 @@
         grantAccess();
       });
 
+      document.getElementById('adminBtn').addEventListener('click', async function () {
+        var email = (document.getElementById('adminEmail').value || '').trim();
+        var password = document.getElementById('adminPassword').value || '';
+        if (!email || !password) {
+          show('error', 'Enter admin email and password.');
+          return;
+        }
+        show('ok', 'Checking admin credentials…');
+        try {
+          var res = await fetch('https://api.mywaitime.com/adhan-api/v1/admin/login/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, password: password }),
+          });
+          if (!res.ok) {
+            show('error', 'Admin sign-in failed. Check email/password or try again.');
+            return;
+          }
+          var data = await res.json();
+          try {
+            if (data.token) localStorage.setItem('azan_admin_token', data.token);
+            if (data.email) localStorage.setItem('azan_admin_email', data.email);
+          } catch (e) {}
+          grantAccess();
+        } catch (e) {
+          show('error', 'Could not reach admin API. Check your connection.');
+        }
+      });
+
       document.getElementById('code').addEventListener('keydown', function (e) {
         if (e.key === 'Enter') document.getElementById('unlockBtn').click();
+      });
+      document.getElementById('adminPassword').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') document.getElementById('adminBtn').click();
       });
 
       // Optional Smart Buttons when Client ID is set
