@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Unlock Adhan Web App</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    :root {
+      --bg: #e8f5e9;
+      --card: #ffffff;
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --text: #1a2e1c;
+      --muted: #5a6b5c;
+      --border: #c8e6c9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, #a5d6a7 0%, transparent 55%),
+        linear-gradient(165deg, #e8f5e9 0%, #f1f8e9 45%, #e0f2f1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+    .panel {
+      width: min(440px, 100%);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 24px 24px;
+      box-shadow: 0 12px 40px rgba(27, 94, 32, 0.12);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.45rem;
+      color: var(--primary-dark);
+    }
+    .price {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 12px 0 4px;
+    }
+    p { margin: 0 0 12px; line-height: 1.5; color: var(--muted); font-size: 0.95rem; }
+    .steps { margin: 16px 0; padding-left: 1.2rem; color: var(--text); }
+    .steps li { margin-bottom: 8px; }
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn-paypal {
+      background: #0070ba;
+      color: #fff;
+    }
+    .btn-paypal:hover { background: #005ea6; }
+    .btn-paypal[aria-disabled="true"] {
+      background: #90a4ae;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .btn-secondary {
+      background: #e8f5e9;
+      color: var(--primary-dark);
+      border: 1px solid var(--border);
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin: 18px 0 6px;
+      color: var(--text);
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 1rem;
+    }
+    .msg {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      display: none;
+    }
+    .msg.error { display: block; background: #ffebee; color: #b71c1c; }
+    .msg.ok { display: block; background: #e8f5e9; color: var(--primary-dark); }
+    .msg.warn { display: block; background: #fff8e1; color: #6d4c00; }
+    #paypal-buttons { margin-top: 12px; min-height: 0; }
+    .foot {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+    .foot a { color: var(--primary-dark); }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <h1 id="title">Unlock web access</h1>
+    <p>Pay once, then open the Adhan web app on this browser. Android and iOS apps stay on the stores.</p>
+    <div class="price" id="price">—</div>
+    <ol class="steps">
+      <li>Pay with PayPal (button below).</li>
+      <li>Email your PayPal receipt to <a id="mailto" href="mailto:zub165@yahoo.com">zub165@yahoo.com</a> with subject <strong>Adhan web access</strong>.</li>
+      <li>Enter the unlock code we send you (or paste it below if you already have one).</li>
+    </ol>
+
+    <a class="btn btn-paypal" id="paypalMe" href="#" target="_blank" rel="noopener" aria-disabled="true">Pay with PayPal</a>
+    <div id="paypal-buttons"></div>
+
+    <label for="code">Unlock code</label>
+    <input id="code" type="text" autocomplete="off" placeholder="Paste code from email" />
+    <button class="btn btn-secondary" id="unlockBtn" type="button">Unlock web app</button>
+    <div class="msg" id="msg" role="status"></div>
+
+    <p class="foot">
+      <a href="index.html">Home</a> ·
+      <a href="privacy.html">Privacy</a> ·
+      <a href="support.html">Support</a>
+    </p>
+  </main>
+
+  <script src="paypal-config.js"></script>
+  <script>
+    (function () {
+      var cfg = window.ADHAN_PAYPAL || {};
+      var key = cfg.storageKey || 'adhan_web_paid_v1';
+      var appPath = cfg.appPath || '/adhan/app/';
+      var msg = document.getElementById('msg');
+
+      function show(type, text) {
+        msg.className = 'msg ' + type;
+        msg.textContent = text;
+      }
+
+      function grantAccess() {
+        try { localStorage.setItem(key, '1'); } catch (e) {}
+        show('ok', 'Access unlocked. Opening the app…');
+        setTimeout(function () { location.href = appPath; }, 500);
+      }
+
+      if (localStorage.getItem(key) === '1') {
+        location.replace(appPath);
+        return;
+      }
+
+      document.getElementById('title').textContent = 'Unlock ' + (cfg.appName || 'Adhan Web');
+      document.getElementById('price').textContent = cfg.priceLabel || '';
+      var mail = cfg.contactEmail || 'zub165@yahoo.com';
+      document.getElementById('mailto').href = 'mailto:' + mail + '?subject=' + encodeURIComponent('Adhan web access');
+      document.getElementById('mailto').textContent = mail;
+
+      var me = document.getElementById('paypalMe');
+      if (cfg.paypalMeUrl) {
+        me.href = cfg.paypalMeUrl;
+        me.removeAttribute('aria-disabled');
+        me.textContent = 'Pay ' + (cfg.priceLabel || '') + ' with PayPal';
+      } else if (cfg.hostedButtonId) {
+        me.href = 'https://www.paypal.com/ncp/payment/' + cfg.hostedButtonId;
+        me.removeAttribute('aria-disabled');
+        me.textContent = 'Pay ' + (cfg.priceLabel || '') + ' with PayPal';
+      } else {
+        show('warn', 'PayPal link not configured yet. Owner: set paypalMeUrl in paypal-config.js and redeploy. You can still test with an unlock code.');
+      }
+
+      document.getElementById('unlockBtn').addEventListener('click', function () {
+        var entered = (document.getElementById('code').value || '').trim();
+        var codes = (cfg.unlockCodes || []).map(function (c) { return String(c).trim().toLowerCase(); });
+        if (!entered) {
+          show('error', 'Enter the unlock code from your email.');
+          return;
+        }
+        if (codes.indexOf(entered.toLowerCase()) === -1) {
+          show('error', 'That code is not valid. Check your email or contact support.');
+          return;
+        }
+        grantAccess();
+      });
+
+      document.getElementById('code').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') document.getElementById('unlockBtn').click();
+      });
+
+      // Optional Smart Buttons when Client ID is set
+      if (cfg.clientId) {
+        var s = document.createElement('script');
+        s.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(cfg.clientId) +
+          '&currency=' + encodeURIComponent(cfg.currency || 'USD');
+        s.onload = function () {
+          if (!window.paypal) return;
+          paypal.Buttons({
+            style: { layout: 'vertical', color: 'blue', shape: 'rect', label: 'pay' },
+            createOrder: function (_d, actions) {
+              return actions.order.create({
+                purchase_units: [{
+                  description: cfg.appName || 'Adhan Web Access',
+                  amount: { currency_code: cfg.currency || 'USD', value: cfg.amount || '4.99' },
+                }],
+              });
+            },
+            onApprove: function (_d, actions) {
+              return actions.order.capture().then(function () {
+                // Client-side capture only — for stronger proof, verify on your server later.
+                grantAccess();
+              });
+            },
+            onError: function () {
+              show('error', 'PayPal checkout failed. Try PayPal.Me or email support.');
+            },
+          }).render('#paypal-buttons');
+        };
+        document.body.appendChild(s);
+      }
+    })();
+  </script>
+</body>
+</html>
