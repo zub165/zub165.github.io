@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#1976d2"/>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+  <title>Health For All — Community Health Fair</title>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <style>
+    :root { --primary:#1976d2; --primary-dark:#0d47a1; --accent:#dc004e; --bg:#eef4fb; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color:#102a43; }
+    .hero {
+      min-height: 72vh; display:flex; align-items:center;
+      background: linear-gradient(135deg, rgba(13,71,161,.92), rgba(25,118,210,.85)),
+                  radial-gradient(circle at 20% 20%, #fff3, transparent 40%);
+      color:#fff; padding: 48px 20px;
+    }
+    .hero-inner { max-width:960px; margin:0 auto; display:grid; gap:24px; align-items:center; grid-template-columns: 88px 1fr; }
+    .hero img { width:88px; height:88px; border-radius:20px; box-shadow:0 8px 24px rgba(0,0,0,.25); }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); margin:0 0 8px; letter-spacing:-.02em; }
+    .tag { opacity:.9; max-width:36rem; }
+    .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
+    .cta a { background:#fff; color:var(--primary-dark); text-decoration:none; font-weight:700; padding:12px 18px; border-radius:10px; }
+    .cta a.ghost { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.5); }
+    .badge { display:inline-block; background:var(--accent); color:#fff; font-size:.75rem; font-weight:700; padding:4px 10px; border-radius:999px; margin-bottom:10px; }
+    section { max-width:960px; margin:0 auto; padding:40px 20px; }
+    h2 { color:var(--primary-dark); }
+    .grid { display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .card { background:#fff; border-radius:14px; padding:18px; border:1px solid #d9e2ec; transition: transform .2s, box-shadow .2s; }
+    .card:hover { transform: translateY(-3px); box-shadow:0 10px 24px rgba(16,42,67,.08); }
+    footer { text-align:center; padding:32px 16px; color:#627d98; font-size:.9rem; }
+    footer a { color:var(--primary); }
+    @media (max-width:600px){ .hero-inner { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <img src="favicon.png" alt="Health For All logo"/>
+      <div>
+        <span class="badge">v1.0.3 · Flutter · Android · Desktop · Web</span>
+        <h1>Health For All</h1>
+        <p class="tag">Community health fair platform — patients, volunteers, SOAP clinical notes, and ICD→lab AI — one Flutter codebase for every screen.</p>
+        <div class="cta">
+          <a href="pay.html">Unlock web app</a>
+          <a class="ghost" href="privacy.html">Privacy</a>
+          <a class="ghost" href="support.html">Support</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <h2>Introduction</h2>
+    <p>Health For All helps clinics and community fairs register patients and volunteers, run assessments, document SOAP notes with ICD-10, and get AI lab/imaging suggestions — with hybrid local + GoDaddy API sync.</p>
+  </section>
+  <section>
+    <h2>Features</h2>
+    <div class="grid">
+      <div class="card"><strong>Health Fair Desk</strong><p>Live patient &amp; volunteer lists, KPIs, printable AI scores.</p></div>
+      <div class="card"><strong>Clinical SOAP</strong><p>Subjective → Objective → Assessment → Plan with ICD chips.</p></div>
+      <div class="card"><strong>ICD → Labs AI</strong><p>Live GoDaddy recommendations plus offline guideline map.</p></div>
+      <div class="card"><strong>Assessments</strong><p>Vitals, mental health, carotid, and AI risk scoring.</p></div>
+      <div class="card"><strong>Lab catalog</strong><p>Order labs &amp; radiology linked to patients.</p></div>
+      <div class="card"><strong>Hybrid sync</strong><p>Works offline; syncs to api.mywaitime.com when online.</p></div>
+    </div>
+  </section>
+  <section>
+    <h2>How it works</h2>
+    <ol>
+      <li>Staff sign in (doctor / admin).</li>
+      <li>Register patients &amp; volunteers at the fair desk.</li>
+      <li>Document SOAP notes; add ICD-10; accept AI lab/imaging suggestions.</li>
+      <li>Print or sync assessments to the cloud.</li>
+    </ol>
+  </section>
+  <section>
+    <h2>Platforms</h2>
+    <p>Android · iOS · Web · macOS · Windows · Linux</p>
+  </section>
+  <footer>
+    <p>© 2026 Innovators Generation · Health For All</p>
+    <p>
+      <a href="index.html">Home</a> ·
+      <a href="pay.html">Pay</a> ·
+      <a href="privacy.html">Privacy</a> ·
+      <a href="delete.html">Delete</a> ·
+      <a href="support.html">Support</a>
+    </p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/health-for-all/app/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Health For All — community health fair patients, volunteers, assessments, and lab tools.">
+  <meta name="theme-color" content="#1976D2">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Health For All">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png?v=1.0.3">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=1.0.3"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/Icon-192.png?v=1.0.3"/>
+
+  <title>Health For All</title>
+  <link rel="manifest" href="manifest.json">
+  <script>
+  (function () {
+    var KEY = 'healthforall_web_paid_v1';
+    try { if (localStorage.getItem(KEY) === '1') return; } catch (e) {}
+    location.replace('/health-for-all/pay.html');
+  })();
+  </script>
+</head>
+<body>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
