@@ -32,8 +32,11 @@
   <title>Adhan App</title>
   <link rel="manifest" href="manifest.json">
   <script>
-    // Paywall: require unlock from /adhan/pay.html before loading the Flutter app.
+    // Paywall only on public GitHub Pages — local/dev (localhost) stays open for testing.
     (function () {
+      var host = location.hostname || '';
+      var isPublic = host === 'zub165.github.io' || host.endsWith('.github.io');
+      if (!isPublic) return;
       var KEY = 'adhan_web_paid_v1';
       try {
         if (localStorage.getItem(KEY) === '1') return;
