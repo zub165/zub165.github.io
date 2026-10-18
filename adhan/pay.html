@@ -80,6 +80,10 @@
       color: var(--primary-dark);
       border: 1px solid var(--border);
     }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
     label {
       display: block;
       font-size: 0.85rem;
@@ -87,7 +91,9 @@
       margin: 18px 0 6px;
       color: var(--text);
     }
-    input[type="text"] {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
       width: 100%;
       padding: 12px 14px;
       border-radius: 10px;
@@ -111,29 +117,34 @@
       text-align: center;
     }
     .foot a { color: var(--primary-dark); }
+    hr.sep { border: none; border-top: 1px solid var(--border); margin: 22px 0 12px; }
   </style>
 </head>
 <body>
   <main class="panel">
     <h1 id="title">Unlock web access</h1>
-    <p>Pay once, then open the Adhan web app on this browser. Android and iOS apps stay on the stores.</p>
+    <p>Pay once, then receive an unlock code by email. Android and iOS apps stay on the stores.</p>
     <div class="price" id="price">—</div>
     <ol class="steps">
       <li>Pay with PayPal (button below).</li>
-      <li>Email your PayPal receipt to <a id="mailto" href="mailto:zub165@yahoo.com">zub165@yahoo.com</a> with subject <strong>Adhan web access</strong>.</li>
-      <li>Enter the unlock code we send you (or paste it below if you already have one).</li>
+      <li>Enter the email you use for PayPal and tap <strong>Email my unlock code</strong>.</li>
+      <li>Paste the code from your inbox (check spam) and unlock.</li>
     </ol>
 
     <a class="btn btn-paypal" id="paypalMe" href="#" target="_blank" rel="noopener" aria-disabled="true">Pay with PayPal</a>
     <div id="paypal-buttons"></div>
 
-    <label for="code">Unlock code</label>
-    <input id="code" type="text" autocomplete="off" placeholder="Paste code from email" />
+    <label for="buyerEmail">Your email (for the unlock code)</label>
+    <input id="buyerEmail" type="email" autocomplete="email" placeholder="you@example.com" />
+    <button class="btn btn-primary" id="requestCodeBtn" type="button">Email my unlock code</button>
+
+    <label for="code">Unlock code from email</label>
+    <input id="code" type="text" autocomplete="off" placeholder="ADHAN-XXXX-XXXX" />
     <button class="btn btn-secondary" id="unlockBtn" type="button">Unlock web app</button>
 
-    <hr style="border: none; border-top: 1px solid var(--border); margin: 22px 0 12px;" />
+    <hr class="sep" />
     <p style="margin-bottom: 8px; color: var(--text); font-weight: 600;">Admin access</p>
-    <p style="font-size: 0.85rem;">Owner sign-in always unlocks the web app (same Azan admin account). Password can be changed later on the server.</p>
+    <p style="font-size: 0.85rem;">Owner sign-in unlocks the web app without a purchase code.</p>
     <label for="adminEmail">Admin email</label>
     <input id="adminEmail" type="email" autocomplete="username" value="zub165@yahoo.com" />
     <label for="adminPassword">Admin password</label>
@@ -155,6 +166,7 @@
       var cfg = window.ADHAN_PAYPAL || {};
       var key = cfg.storageKey || 'adhan_web_paid_v1';
       var appPath = cfg.appPath || '/adhan/app/';
+      var apiBase = (cfg.apiBase || 'https://api.mywaitime.com/adhan-api').replace(/\/$/, '');
       var msg = document.getElementById('msg');
 
       function show(type, text) {
@@ -175,9 +187,6 @@
 
       document.getElementById('title').textContent = 'Unlock ' + (cfg.appName || 'Adhan Web');
       document.getElementById('price').textContent = cfg.priceLabel || '';
-      var mail = cfg.contactEmail || 'zub165@yahoo.com';
-      document.getElementById('mailto').href = 'mailto:' + mail + '?subject=' + encodeURIComponent('Adhan web access');
-      document.getElementById('mailto').textContent = mail;
 
       var me = document.getElementById('paypalMe');
       if (cfg.paypalMeUrl) {
@@ -189,21 +198,58 @@
         me.removeAttribute('aria-disabled');
         me.textContent = 'Pay ' + (cfg.priceLabel || '') + ' with PayPal';
       } else {
-        show('warn', 'PayPal link not configured yet. Owner: set paypalMeUrl in paypal-config.js and redeploy. You can still test with an unlock code.');
+        show('warn', 'PayPal link not configured. Set paypalMeUrl in paypal-config.js.');
       }
 
-      document.getElementById('unlockBtn').addEventListener('click', function () {
+      document.getElementById('requestCodeBtn').addEventListener('click', async function () {
+        var email = (document.getElementById('buyerEmail').value || '').trim();
+        if (!email || email.indexOf('@') < 1) {
+          show('error', 'Enter the email where we should send your unlock code.');
+          return;
+        }
+        show('ok', 'Sending unlock code…');
+        try {
+          var res = await fetch(apiBase + '/v1/web/request-code/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, note: 'paypal.me web purchase' }),
+          });
+          var data = {};
+          try { data = await res.json(); } catch (e) {}
+          if (!res.ok) {
+            show('error', data.message || data.error || 'Could not send code. Try again or email support.');
+            return;
+          }
+          show('ok', data.message || ('Code sent to ' + email + '. Check inbox and spam.'));
+        } catch (e) {
+          show('error', 'Could not reach the server. Check your connection.');
+        }
+      });
+
+      document.getElementById('unlockBtn').addEventListener('click', async function () {
         var entered = (document.getElementById('code').value || '').trim();
-        var codes = (cfg.unlockCodes || []).map(function (c) { return String(c).trim().toLowerCase(); });
+        var email = (document.getElementById('buyerEmail').value || '').trim();
         if (!entered) {
           show('error', 'Enter the unlock code from your email.');
           return;
         }
-        if (codes.indexOf(entered.toLowerCase()) === -1) {
-          show('error', 'That code is not valid. Check your email or contact support.');
-          return;
+        show('ok', 'Checking code…');
+        try {
+          var res = await fetch(apiBase + '/v1/web/verify-code/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: entered, email: email || undefined }),
+          });
+          var data = {};
+          try { data = await res.json(); } catch (e) {}
+          if (!res.ok || !data.ok) {
+            show('error', data.message || 'That code is not valid.');
+            return;
+          }
+          grantAccess();
+        } catch (e) {
+          show('error', 'Could not verify code. Check your connection.');
         }
-        grantAccess();
       });
 
       document.getElementById('adminBtn').addEventListener('click', async function () {
@@ -215,7 +261,7 @@
         }
         show('ok', 'Checking admin credentials…');
         try {
-          var res = await fetch('https://api.mywaitime.com/adhan-api/v1/admin/login/', {
+          var res = await fetch(apiBase + '/v1/admin/login/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: email, password: password }),
@@ -238,11 +284,13 @@
       document.getElementById('code').addEventListener('keydown', function (e) {
         if (e.key === 'Enter') document.getElementById('unlockBtn').click();
       });
+      document.getElementById('buyerEmail').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') document.getElementById('requestCodeBtn').click();
+      });
       document.getElementById('adminPassword').addEventListener('keydown', function (e) {
         if (e.key === 'Enter') document.getElementById('adminBtn').click();
       });
 
-      // Optional Smart Buttons when Client ID is set
       if (cfg.clientId) {
         var s = document.createElement('script');
         s.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(cfg.clientId) +
@@ -261,8 +309,8 @@
             },
             onApprove: function (_d, actions) {
               return actions.order.capture().then(function () {
-                // Client-side capture only — for stronger proof, verify on your server later.
-                grantAccess();
+                show('ok', 'Payment received. Enter your email above to get your unlock code.');
+                document.getElementById('buyerEmail').focus();
               });
             },
             onError: function () {

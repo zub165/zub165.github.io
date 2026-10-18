@@ -1,13 +1,6 @@
 /**
- * Fill in YOUR PayPal details, then redeploy: DEPLOY_WEB_APP=1 ./website/deploy-web.sh
- *
- * What to send / paste here (any ONE of the payment options is enough):
- * 1) paypalMeUrl  — e.g. https://paypal.me/YourName/4.99  (PayPal app → Profile → PayPal.Me)
- * 2) hostedButtonId — from paypal.com/buttons (Buy Now / Pay Now button)
- * 3) clientId — from developer.paypal.com (Apps & Credentials → Live Client ID) for on-page Smart Buttons
- *
- * unlockCodes: codes you email to buyers after you see the PayPal payment
- *   (static GitHub Pages cannot secretly verify PayPal by itself).
+ * PayPal + web unlock (codes are emailed by the backend — not listed here).
+ * Redeploy: DEPLOY_WEB_APP=0 ./website/deploy-web.sh  (or full release)
  */
 window.ADHAN_PAYPAL = {
   appName: 'Adhan App (Web)',
@@ -15,15 +8,12 @@ window.ADHAN_PAYPAL = {
   currency: 'USD',
   amount: '4.99',
 
-  // --- PayPal.Me (live) ---
   paypalMeUrl: 'https://paypal.me/innovatorgeneration/4.99',
+  hostedButtonId: '',
+  clientId: '',
 
-  hostedButtonId: '', // optional PayPal hosted button id
-  clientId: '', // optional Live Client ID for Smart Payment Buttons
-
-  unlockCodes: [
-    'ADHAN-WEB-ACCESS', // change this after first deploy
-  ],
+  /** Backend that emails + verifies unlock codes */
+  apiBase: 'https://api.mywaitime.com/adhan-api',
 
   contactEmail: 'zub165@yahoo.com',
   storageKey: 'adhan_web_paid_v1',
